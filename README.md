@@ -12,7 +12,7 @@ The retries are selected in a batch job. The exact timing of the retries depends
 
 Simply extend the abstract class `Retryable` and implement `protected abstract JobResult startJob();`. If the status of JobResult is `FAILED_RETRY` the framework will retry the job at the specified interval. 
 
-`Retryable` extends `Queueable` so your job should be run asynchronously. For the example below this means:
+`Retryable` implement `Queueable` so your job should be run asynchronously. For the example below this means:
 ```apex
 System.enqueueJob(new SomeCalloutRetryable('"Post":"This is my Post"'));
 ```
