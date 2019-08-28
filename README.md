@@ -19,7 +19,7 @@ Simply extend the abstract class `Retryable` and implement `protected abstract J
 System.enqueueJob(new SomeCalloutRetryable('"Post":"This is my Post"'));
 ```
 
-Example implementation: 
+### Example implementation: 
 
 ```apex
 public with sharing class SomeCalloutRetryable extends Retryable {
