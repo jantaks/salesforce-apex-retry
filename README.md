@@ -18,6 +18,7 @@ Simply extend the abstract class `Retryable` and implement `protected abstract J
 ```apex
 System.enqueueJob(new SomeCalloutRetryable('"Post":"This is my Post"'));
 ```
+The project has 100% test coverage. For more implementation details see the Test classes. 
 
 ### Example implementation: 
 
