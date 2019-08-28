@@ -39,6 +39,4 @@ public virtual class RetryableMock extends Retryable {
                 ? JobResult.success('Mock Job Success')
                 : JobResult.retry('Mock Job Failed');
     }
-
-
 }

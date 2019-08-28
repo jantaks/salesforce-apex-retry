@@ -21,7 +21,6 @@ public with sharing class BatchableRetry implements Database.Batchable<SObject>,
             storedJob.lastTry__c = System.now();
             storedJob.serializedJob__c = JSON.serialize(currentJob);
             storedJob.count__c = storedJob.count__c + 1;
-            storedJob.nextTry__c = currentJob.getNextTry();
             storedJob.message__c = jobResult.message;
             storedJob.status__c = jobResult.status.name();
             jobsToUpdate.add(storedJob);
