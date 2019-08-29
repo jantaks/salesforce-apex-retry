@@ -42,18 +42,8 @@ public with sharing class SomeCalloutRetryable extends Retryable {
         request.setHeader('Accept', 'application/json');
         request.setBody(this.body);
         HttpResponse response = http.send(request);
-        Integer httpResponseCode = response.getStatusCode();
-        switch on httpResponseCode{
-            when 200,201{
-                return JobResult.success(response.getBody());
-            }
-            when 401{
-                return JobResult.actionRequired(response.getBody());
-            }
-            when else {
-                return JobResult.retry(response.getBody());
-            }
-        }
+        Retryable.Status retryStatus = Utils.httpRetryScenario(response.getStatusCode(), response.getStatus());
+        return new JobResult(retryStatus, response.getBody());
     }
 }
 
